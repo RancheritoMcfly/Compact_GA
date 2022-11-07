@@ -16,25 +16,20 @@ def CGA(poblacion, dimension):
     while(flag):
         """En este primer apartado reviso los valores de ganador y perdedor para
         compararlos entre ellos y poder realizar la actualización del vector de
-        probabilidad
-        
-        """
+        probabilidad"""
         for index, (g, p) in enumerate(zip(ganador, perdedor)):
             if(g != p):
                 if( g == 1):
                     vector[index] += 1/poblacion
             else: vector[index] -= 1/poblacion
-        #print("Vector actualizado: ", vector) 
+        adan = np.random.random(dimension)
+        eva = np.random.random(dimension)
+        ganador, perdedor = competir(adan, eva, vector)
         
-        """En este apartado hacemos la comprobación para saber si ya 
-        los valores dentro del vector de probabilidad se encuentran fuera
-        del rango de >0 y <1"""
-        for i in vector:
-            if(i > 0 and i < 1):
-                adan = np.random.random(dimension)
-                eva = np.random.random(dimension)
-                ganador, perdedor = competir(adan, eva, vector)
-            else: flag = False
+        if(): #Quiero revisar que puedo usar para el criterio de paro.
+            flag = False       
+
+        print("Vector actual: ", vector) 
  
     print("Vector final: ", vector)    
         
@@ -63,6 +58,6 @@ def competir(adan, eva, vector):
     else:
         return adan, eva
 
-CGA(12, 5) 
+CGA(10, 3) 
 """Parametros: 1.- Cantidad de individuos en la poblacion simulada y 
 2.- cromosomas por individuo"""
